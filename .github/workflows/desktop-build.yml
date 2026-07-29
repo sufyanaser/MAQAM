@@ -44,7 +44,7 @@ jobs:
         run: npm run build
 
       - name: Build Windows installer
-        run: npm run desktop:win
+        run: npx electron-builder --win nsis --x64 --publish never
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
 
