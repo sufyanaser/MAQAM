@@ -8,6 +8,7 @@ export default defineConfig({
         port: 3000,
         host: '127.0.0.1',
         strictPort: true,
+        allowedHosts: ['terminal.local'],
       },
       plugins: [react()],
       resolve: {

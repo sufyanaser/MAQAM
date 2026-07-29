@@ -6,12 +6,15 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 960,
-    height: 880,
-    minWidth: 760,
-    minHeight: 700,
+    width: 836,
+    height: 744,
+    minWidth: 780,
+    minHeight: 660,
+    resizable: false,
+    maximizable: false,
+    useContentSize: true,
     show: false,
-    backgroundColor: '#0a0a0c',
+    backgroundColor: '#101012',
     autoHideMenuBar: true,
     title: 'MAQAM Lab',
     icon: path.join(__dirname, '..', 'build', 'icon.png'),

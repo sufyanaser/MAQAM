@@ -1,9 +1,9 @@
 import React from 'react';
-import { Activity, Sliders, Grid } from 'lucide-react';
+import { Activity, Gauge, Sliders } from 'lucide-react';
 
 interface HeaderProps {
-  currentView: 'analyzer' | 'cubase';
-  onViewChange: (view: 'analyzer' | 'cubase') => void;
+  currentView: 'analyzer' | 'tempo';
+  onViewChange: (view: 'analyzer' | 'tempo') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ currentView, onViewChange }) => {
@@ -45,16 +45,16 @@ const Header: React.FC<HeaderProps> = ({ currentView, onViewChange }) => {
          <div className="w-px bg-[#222] my-1"></div>
 
          <button 
-           onClick={() => onViewChange('cubase')}
+           onClick={() => onViewChange('tempo')}
            className={`
              flex items-center gap-2 px-4 py-1.5 rounded text-[10px] font-bold uppercase tracking-wider transition-all
-             ${currentView === 'cubase' 
-               ? 'bg-[#2a2a2e] text-amber-500 border border-amber-900/50 shadow-[0_1px_5px_rgba(0,0,0,0.5)]' 
+             ${currentView === 'tempo'
+               ? 'bg-[#2a2a2e] text-cyan-400 border border-cyan-900/50 shadow-[0_1px_5px_rgba(0,0,0,0.5)]'
                : 'text-[#555] hover:text-[#888] hover:bg-[#1a1a1d] border border-transparent'}
            `}
          >
-           <Grid size={12} />
-           <span>Cubase Guide</span>
+           <Gauge size={12} />
+           <span>Tempo Key</span>
          </button>
       </div>
 
@@ -62,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, onViewChange }) => {
       <div className="hidden sm:flex flex-col items-end gap-1">
          <div className="flex items-center gap-2">
             <span className="text-[9px] font-bold text-[#333] uppercase">Power</span>
-            <div className={`w-2 h-2 rounded-full shadow-[0_0_8px] animate-pulse transition-colors ${currentView === 'cubase' ? 'bg-amber-500 shadow-amber-500' : 'bg-cyan-500 shadow-cyan-500'}`}></div>
+            <div className="w-2 h-2 rounded-full shadow-[0_0_8px] animate-pulse transition-colors bg-cyan-500 shadow-cyan-500"></div>
          </div>
          <div className="text-[10px] text-[#444] font-mono">
             44.1 kHz / 24-bit

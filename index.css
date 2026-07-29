@@ -5,7 +5,7 @@
 :root {
   color-scheme: dark;
   font-family: 'Cairo', sans-serif;
-  background: #0a0a0c;
+  background: #101012;
   color: #e1e1e6;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,13 +15,14 @@ html,
 body,
 #root {
   min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   margin: 0;
 }
 
 body {
-  overflow-x: hidden;
-  background: #0a0a0c;
+  overflow: hidden;
+  background: #101012;
 }
 
 button,
