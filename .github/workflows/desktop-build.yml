@@ -1,0 +1,57 @@
+name: Build Windows Desktop
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop
+    paths:
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.css'
+      - 'electron/**'
+      - 'build/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tailwind.config.cjs'
+      - 'postcss.config.cjs'
+      - '.github/workflows/desktop-build.yml'
+
+concurrency:
+  group: desktop-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check and build web app
+        run: npm run build
+
+      - name: Build Windows installer
+        run: npm run desktop:win
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: MAQAM-Lab-Windows-x64
+          path: release/*.exe
+          if-no-files-found: error
+          retention-days: 14

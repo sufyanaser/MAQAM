@@ -72,7 +72,7 @@ const App: React.FC = () => {
 
         {/* Footer Hardware Info */}
         <div className="h-8 bg-[#121214] border-t border-black flex items-center justify-between px-4">
-           <span className="text-[9px] text-[#444] font-mono">GLS AUDIO ENGINE v2.1</span>
+           <span className="text-[9px] text-[#444] font-mono">MAQAM ENGINE v0.1.0</span>
            <div className="flex gap-2">
               <span className={`w-1 h-1 rounded-full ${currentView === 'analyzer' ? 'bg-green-900' : 'bg-[#333]'}`}></span>
               <span className={`w-1 h-1 rounded-full ${currentView === 'cubase' ? 'bg-amber-900' : 'bg-[#333]'}`}></span>
